@@ -3,7 +3,7 @@
 This repository implements a Basic Loyalty Transaction System which allows user creation,
 loyalty points transfer and retrieval of users and transfers.
 
-## Design
+## Overview
 
 - REST API Server is implemented using Flask microframework in Python3
 - Postgresql, a relational database is the underlying data store
@@ -39,8 +39,8 @@ curl -d '{"points":50, "userId":1}' -H "Content-Type: application/json"
 | --- | --- |
 | Home page | http://localhost:5000/ |
 | Retrieve All Users| http://localhost:5000/user |
-| Retrieve User by userID | http://localhost:5000/user/<userId> |
-| Retrieve Transfer by userID | http://localhost:5000/user/<userId> |
+| Retrieve User by userID | http://localhost:5000/user/<userId\> |
+| Retrieve Transfer by userID | http://localhost:5000/user/<userId\> |
 
 
 ### Stop Application
@@ -48,10 +48,11 @@ curl -d '{"points":50, "userId":1}' -H "Content-Type: application/json"
 $ docker-compose down
 ```
 
-
 ## Tests
 
-Tests are currently very basic and are available in `tests/` subdirectory.
+Tests are currently available only for `app.entities` package and is Pytest compatible.
 ```
 $ python -m pytest tests
 ```
+
+`app.service` package tests can be similarly written.
