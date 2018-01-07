@@ -11,23 +11,20 @@ from app.service import transferService
 
 app=Flask(__name__)
 
-@app.route("/user", methods=['POST'])
+@app.route("/user", methods=['POST', 'GET'])
 def createUser():
 	if request.method == 'POST':
 		jsonFO=request.get_json()
 		userFO=UserFO(jsonFO['firstName'],jsonFO['lastName'],jsonFO['email'])
 		return userService.createUser(userFO)
+	elif request.method == 'GET':
+		return userService.getAllUsers()
 
 
 @app.route("/user/<id>", methods=['GET'])
 def getUserById(id):
 	if request.method == 'GET':
 		return userService.getUserById(id)
-
-@app.route("/user", methods=['GET'])
-def getAllUsers():
-	if request.method == 'GET':
-		return userService.getAllUsers()
 
 @app.route("/transfer/<userid>", methods=['GET'])
 def getTransfersByUserId(userid):

@@ -32,14 +32,14 @@ def getUser(userId=None):
 		return result
 	return {"error": "DB Connection Error"}
 
-def getAllUsers(None):
+def getAllUsers():
 	conn=connect()
 	if conn is not None:
 		cur=conn.cursor()
 		cur.execute("select user_id, first_name, last_name, email, points from users")
 		rows=cur.fetchall()
-		if row is None:
-			return {"error": "User Not Found"}
+		if rows is None:
+			return {"error": "No Users in System"}
 
 		result=[]
 		for row in rows:
