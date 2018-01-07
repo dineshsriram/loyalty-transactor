@@ -1,10 +1,12 @@
-FROM postgres:latest
+FROM python:3.5-alpine
+ADD . /code
+WORKDIR /code
 
-ENV POSTGRES_USER 	dinesh
-ENV POSTGRES_PASSWORD 	secret
-ENV POSTGRES_DB 	loyaltydb
+ENV http_proxy=http://devproxy.bloomberg.com:82
+ENV https_proxy=http://devproxy.bloomberg.com:82
 
-ADD db/loyaltydb.sql	/docker-entrypoint-initdb.d/
+RUN apk update && apk add --virtual deps gcc python-dev linux-headers musl-dev postgresql-dev && apk add --no-cache libpq
 
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-
+CMD ["python", "app.py"]

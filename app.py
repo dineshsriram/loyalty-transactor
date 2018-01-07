@@ -4,10 +4,10 @@ Basic Loyalty Transaction System
 
 from flask import Flask,request
 import logging
-from entities.userFO import UserFO
-from entities.transferFO import TransferFO
-from service import userService
-from service import transferService
+from app.entities.userFO import UserFO
+from app.entities.transferFO import TransferFO
+from app.service import userService
+from app.service import transferService
 
 app=Flask(__name__)
 

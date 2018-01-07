@@ -1,16 +1,14 @@
 import psycopg2
-
 from datetime import datetime
-from entities.userFO import UserFO
 
-import sys
-sys.path.append('../entities')
+from ..entities.userFO import UserFO
 
 
 def connect():
 	conn=None
 	try:
-		conn=psycopg2.connect(database='loyaltydb', user='dinesh', password='secret', port=5432, host='0.0.0.0') 
+		conn=psycopg2.connect("postgresql://dinesh:secret@3d1cedf75733:5432/loyaltydb")
+#database='loyaltydb', user='dinesh', password='secret', port=5432, host='localhost') 
 	except Exception as e:
 		print(e)
 	return conn 

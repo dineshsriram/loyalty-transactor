@@ -1,5 +1,5 @@
 """
-Loyalty Transactor Main Package
+App Main Package
 """
 
 __all__= [ "entities", "service" ]
