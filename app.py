@@ -24,6 +24,11 @@ def getUserById(id):
 	if request.method == 'GET':
 		return userService.getUserById(id)
 
+@app.route("/user", methods=['GET'])
+def getAllUsers():
+	if request.method == 'GET':
+		return userService.getAllUsers()
+
 @app.route("/transfer/<userid>", methods=['GET'])
 def getTransfersByUserId(userid):
 	if request.method == 'GET':

@@ -14,6 +14,8 @@ def getUserById(userId=None):
 		return json.dumps({"error": "Invalid userId"})
 	return json.dumps(dbService.getUser(userId))
 
+def getAllUsers():
+	return json.dumps(dbService.getAllUsers())
 
 def getAllTransfersbyId(userId=None):	
 	if userId is None:

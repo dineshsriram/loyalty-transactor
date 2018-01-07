@@ -32,6 +32,29 @@ def getUser(userId=None):
 		return result
 	return {"error": "DB Connection Error"}
 
+def getAllUsers(None):
+	conn=connect()
+	if conn is not None:
+		cur=conn.cursor()
+		cur.execute("select user_id, first_name, last_name, email, points from users")
+		rows=cur.fetchall()
+		if row is None:
+			return {"error": "User Not Found"}
+
+		result=[]
+		for row in rows:
+			result.append({
+			"userId" :   row[0],
+			"firstName": row[1],
+			"lastName" : row[2],
+			"email" :    row[3],
+			"points":    row[4]})
+		cur.close()
+		conn.close()
+		return result
+	return {"error": "DB Connection Error"}
+
+
 def updateUser(userId=None, points=None):
 	conn=connect()
 	if conn is not None:
