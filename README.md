@@ -55,8 +55,8 @@ $ docker-compose down
 ## Tests
 
 Tests are currently available only for `app.entities` package and is Pytest compatible.
+`app.service` package tests can be similarly written.
+
 ```
 $ python -m pytest tests
 ```
-
-`app.service` package tests can be similarly written.
