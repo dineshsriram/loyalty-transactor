@@ -7,7 +7,7 @@ from ..entities.userFO import UserFO
 def connect():
 	conn=None
 	try:
-		conn=psycopg2.connect("postgresql://dinesh:secret@3d1cedf75733:5432/loyaltydb")
+		conn=psycopg2.connect("postgresql://dinesh:secret@psql:5432/loyaltydb")
 #database='loyaltydb', user='dinesh', password='secret', port=5432, host='localhost') 
 	except Exception as e:
 		print(e)

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "5000:5000"
+    networks:
+      flask-psql-app:
+        aliases:
+          - flask
+
+  psql:
+    build: db/.
+    ports:
+     - "5432:5432"
+    networks:
+      flask-psql-app:
+        aliases:
+          - psql
+
+networks:
+  flask-psql-app:
+
