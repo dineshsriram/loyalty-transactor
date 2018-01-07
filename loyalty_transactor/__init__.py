@@ -2,4 +2,4 @@
 Loyalty Transactor Main Package
 """
 
-__all__= [ "entities" ]
+__all__= [ "entities", "service" ]
