@@ -54,9 +54,16 @@ $ docker-compose down
 
 ## Tests
 
-Tests are currently available only for `app.entities` package and is Pytest compatible.
+Tests are currently available only for `app.entities` package and is Pytest compatible.  
 `app.service` package tests can be similarly written.
+
+Note that before tests can be run, the package dependencies in `requirements.txt` has
+to be installed locally.
 
 ```
 $ python -m pytest tests
 ```
+
+
+## Production Readiness
+See [here](assumptions.md)
