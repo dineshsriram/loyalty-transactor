@@ -10,13 +10,17 @@ loyalty points transfer and retrieval of users and transfers.
 
 ## Quick Start
 
+### Prerequisites
+- [docker](https://docs.docker.com/engine/installation/)
+- [docker-compose](https://docs.docker.com/compose/install/)
+
 ### Start Application
 ```
 $ docker-compose up
 ```
 
 This builds docker images, `web:latest` and `psql:latest` and starts up two containers locally.  
-Port 5000 is reserved for the Flask Server and port 5432 for Postgresql.
+Container Ports 5000(Flask Server) and 5432(Postgresql) are bound to localhost.
 
 ### Interact
 
@@ -30,7 +34,7 @@ $ curl -d '{"firstName":"Dinesh", "lastName": "Sriram", "email": "dinesh@test.co
 2. Create Transfer
 ```
 curl -d '{"points":50, "userId":1}' -H "Content-Type: application/json" 
-     -X PUT http://localhost:5000/transfer
+     -X PUT http://localhost:5000/transfer/<userId>
 ```
 
 3. Query Users/Transfers
@@ -40,7 +44,7 @@ curl -d '{"points":50, "userId":1}' -H "Content-Type: application/json"
 | Home page | http://localhost:5000/ |
 | Retrieve All Users| http://localhost:5000/user |
 | Retrieve User by userID | http://localhost:5000/user/<userId\> |
-| Retrieve Transfer by userID | http://localhost:5000/user/<userId\> |
+| Retrieve Transfer by userID | http://localhost:5000/transfer/<userId\> |
 
 
 ### Stop Application
