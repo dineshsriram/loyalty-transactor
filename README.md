@@ -44,7 +44,7 @@ curl -d '{"points":50, "userId":1}' -H "Content-Type: application/json"
 | Home page | http://localhost:5000/ |
 | Retrieve All Users| http://localhost:5000/user |
 | Retrieve User by userID | http://localhost:5000/user/<userId\> |
-| Retrieve Transfer by userID | http://localhost:5000/transfer/<userId\> |
+| Retrieve Transfers by userID | http://localhost:5000/transfer/<userId\> |
 
 
 ### Stop Application
