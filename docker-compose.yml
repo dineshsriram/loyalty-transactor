@@ -1,15 +1,5 @@
 version: '3'
 services:
-  web:
-    build: .
-    image: web:latest
-    ports:
-     - "5000:5000"
-    networks:
-      flask-psql-app:
-        aliases:
-          - flask
-
   psql:
     build: db/.
     image: psql:latest
@@ -19,6 +9,31 @@ services:
       flask-psql-app:
         aliases:
           - psql
+
+  web:
+    build: .
+    image: web:latest
+    depends_on:
+     - psql
+    ports:
+     - "5000:5000"
+    networks:
+      flask-psql-app:
+        aliases:
+          - flask
+
+  locust:
+    build: tests/.
+    image: locust:latest
+    depends_on:
+     - web
+    ports:
+     - "8089:8089"
+    networks:
+      flask-psql-app:
+        aliases:
+          - locust 
+
 
 networks:
   flask-psql-app:

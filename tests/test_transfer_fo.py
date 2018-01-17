@@ -1,30 +1,24 @@
-from loyalty_transactor.entities.transferFO import TransferFO,TransferMode
+from app.entities.transferFO import TransferFO
 
 import pytest
 
 def test_basic():
-	me=TransferFO(123, TransferMode.ADD_POINTS, 35)
+	me=TransferFO(123, 35)
 	assert (me.userId == 123)
-	assert (me.mode == TransferMode.ADD_POINTS)
 	assert (me.points == 35 )
 
 def test_bad_userid():
 	with pytest.raises(RuntimeError):
-		TransferFO(-123, TransferMode.ADD_POINTS, 35)
+		TransferFO("", 35)
 	with pytest.raises(RuntimeError):
-		TransferFO(None, TransferMode.ADD_POINTS, 35)
+		TransferFO(None, 35)
 
-def test_bad_mode():
-	with pytest.raises(RuntimeError):
-		TransferFO(123, -1, 35)
-	with pytest.raises(RuntimeError):
-		TransferFO(123, 124, 35)
 
 def test_bad_points():
 	with pytest.raises(RuntimeError):
-		TransferFO(123, TransferMode.DEDUCT_POINTS, -1)
+		TransferFO(123, "")
 	with pytest.raises(RuntimeError):
-		TransferFO(123, TransferMode.ADD_POINTS, -12)
+		TransferFO(123, None)
 
 
 

@@ -1,4 +1,4 @@
-from loyalty_transactor.entities.userFO import UserFO
+from app.entities.userFO import UserFO
 import pytest
 
 def test_basic():
