@@ -1,4 +1,7 @@
 from locust import HttpLocust, TaskSet, task
+import random
+import string
+import json
 
 class UserBehavior(TaskSet):
     def on_start(self):
@@ -6,12 +9,17 @@ class UserBehavior(TaskSet):
         self.createUser()
 
     def createUser(self):
-        self.client.post("/user", {"firstName":"Dinesh", "lastName": "Sriram", "email": "dinesh@test.com"})
+	def getRandomName(limit=6):
+		return ''.join(random.choice(string.ascii_letters) for x in range(limit))
+	data={}
+	data["firstName"]=getRandomName()
+	data["lastName"]=getRandomName()
+	data["email"]=data["firstName"]+"."+data["lastName"]+"@test.com"
+        self.client.post("/user", json=data)
 
     @task
     def getAllUsers(self):
-        response=self.client.get("/user")
-	print("getAllUsers", response.json())
+        self.client.get("/user")
 
     @task
     def getUserId(self):
